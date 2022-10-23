@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <xsd:schema
+ targetNamespace="http://schemas.microsoft.com/office/infopath/2003/myXSD/2008-0303T22:25:25"
+   xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2008-03-03T22:25:25"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  
+   <xsd:element name="myFields">
+     <xsd:complexType>
+       <xsd:sequence>
+         <xsd:element ref="my:field1" minOccurs="0"/>
+         <xsd:element ref="my:group1" minOccurs="0"/>
+       </xsd:sequence>
+       <xsd:anyAttribute 
+ processContents="lax" 
+ namespace="http://www.w3.org/XML/1998/namespace"/>
+     </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="field1" type="xsd:string"/>
+   <xsd:element name="group1">
+     <xsd:complexType>
+       <xsd:sequence>
+         <xsd:element
+ ref="my:group2"
+ minOccurs="0"
+ maxOccurs="unbounded"/>
+       </xsd:sequence>
+     </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="group2">
+     <xsd:complexType>
+       <xsd:sequence>
+         <xsd:element ref="my:field2" minOccurs="0"/>
+         <xsd:element ref="my:field3" minOccurs="0"/>
+       </xsd:sequence>
+     </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="field2" nillable="true" type="xsd:date"/>
+   <xsd:element name="field3" nillable="true" type="xsd:boolean"/>
+  
+ </xsd:schema>
+ A sample form file based on the preceding XML Schema Document (XSD) is:
+ <?xml version="1.0" encoding="UTF-8"?>
+ <?mso-infoPathSolution
+   solutionVersion="1.0.0.143"
+   productVersion="12.0.0"
+   PIVersion="1.0.0.0"
+   href="http://server/TestLibrary/Forms/template.xsn"
+   name="urn:schemas-microsoft-com:office:infopath:NickTest:-myXSD-2008-03-03T22-25-25" ?>
+ <?mso-application
+   progid="InfoPath.Document"
+   versionProgid="InfoPath.Document.2"?>
+ <my:myFields
+   xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2008-03-03T22:25:25"
+   xml:lang="en-us">
+  
+   <my:field1>Al</my:field1>
+   <my:group1>
+     <my:group2>
+       <my:field2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">2009-01-01</my:field2>
+       <my:field3>true</my:field3>
+     </my:group2>
+     <my:group2>
+       <my:field2>2009-01-31</my:field2>
+       <my:field3>false</my:field3>
+     </my:group2>
+   </my:group1>
+ </my:myFields>
